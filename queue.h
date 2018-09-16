@@ -130,9 +130,10 @@ template<typename T> void Queue<T>::print()
     temp=head;
     while(temp!=nullptr)
     {
-        cout<<temp->data<<endl;
+        cout<<temp->data;
         temp=temp->next;
     }
+    cout <<endl;
 }
 
 template<class T> Queue<T>::~Queue()
