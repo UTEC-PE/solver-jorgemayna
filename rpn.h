@@ -66,13 +66,39 @@ void compare(string a,Queue<string>& s_rpn,Stack<string>& oper)
 
 void toRPN(string s,Queue<string>& s_rpn,Stack<string>& oper)
 {
+    system("cls");
+    cout<<"==========================================================="<<endl;
+    cout<<"\t\tPractica Operaciones"<<endl;
+    cout<<"==========================================================="<<endl;
+    cout<<endl;
+    cout <<"* Operacion en formato infijo:      ";
+    cout <<s<<endl;
+    string ca,res;
+    for(int i=0;i<s.length();i++)
+    {
+        if(s[i]<=122 && s[i]>=97)
+        {
+            ca=s[i];
+            cout<<ca<<" = ";
+            cin>>res;
+
+            while(s.find(ca)!=s.npos)
+            {
+                int ff=s.find(ca);
+                s.replace(ff,1,res);
+            }
+        }
+    }
+    cout <<"                                    "<<s<<endl<<endl;
+    cout<<"==========================================================="<<endl;
+
     string f="";
     int i=0;
     bool num,operan;
     while(i<s.length())
     {
         num=false; f=""; operan=false;
-        while(48<=s[i] && s[i]<=57)
+        while((48<=s[i] && s[i]<=57) || s[i]==46)
         {
             f=f+s[i];
             i++;

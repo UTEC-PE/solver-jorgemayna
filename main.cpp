@@ -49,25 +49,32 @@ void solve(Queue<string>& s_rpn,Stack<double>& numbers)
             numbers.push(operar(sol,operand_1,operand_2));
         }else
         {
-            numbers.push(double(stoi(sol)));
+            numbers.push(stod(sol));
         }
         s_rpn.pop_front();
     }
 }
 
-void menu() {
+int menu() {
       system("cls");
+      int op;
       cout<<"==========================================================="<<endl;
       cout<<"\t\tPractica Operaciones"<<endl;
       cout<<"==========================================================="<<endl;
       cout<<endl;
-      cout<<"Elija una operacion:"<<endl;
-      cout<<"7/4*((a+b)*a)+3"<<endl;
+      cout<<"Elija una opcion:"<<endl;
+      cout<<"1) 7/4*((a+b)*a)+3"<<endl;
+      cout<<"2) 7/4*((a+-+--b)*a)+3"<<endl;
+      cout<<"3) 2+(3)"<<endl;
+      cout<<"4) 7/4*((a+b)^4*a)+3"<<endl;
+      cout<<"5) Ingrese su propia operacion"<<endl;
+      cin>>op;
+      return op;
 
       //char* str="7/4*((a+b)*a)+3";
       //char* str="7/4*((a+-+--b)*a)+3";
       //char* str="2+(3)";
-      char* str="7/4*((a+b)^4*a)+3";
+      //char* str="7/4*((a+b)^4*a)+3";
       Stack<double> stack;
       Queue<string> queue;
 
@@ -76,41 +83,35 @@ void menu() {
 }
 
 int main(int argc, char const *argv[]) {
-    //menu();
-    string a="7/4*((a+b)^4*a)+3";
-    string ca,res;
-    cout <<a<<endl;
-    for(int i=0;i<a.length();i++)
-    {
-        if(a[i]<=122 && a[i]>=97)
-        {
-            ca=a[i];
-            cout<<ca<<" = ";
-            cin>>res;
 
-            while(a.find(ca)!=a.npos)
-            {
-                int ff=a.find(ca);
-
-                //a.erase(ff);
-                a.replace(ff,1,res);
-                //a.insert(ff,res);
-            }
-
-        }
-    }
-    cout<<endl;
-    cout <<a<<endl;
-
+    string a;
+    switch(menu())
+      {
+        case 1: a="7/4*((a+b)*a)+3";
+        break;
+        case 2: a="7/4*((a+-+--b)*a)+3";
+        break;
+        case 3: a="2+(3)";
+        break;
+        case 4: a="7/4*((a+b)^4*a)+3";
+        break;
+        case 5:
+            cout <<endl;
+            cout<<"Ingrese la operacion:  "<<endl;
+            cin>>a;
+        break;
+      }
     Queue<string> s_rpn;
     Stack<string> oper;
 
     toRPN(a,s_rpn,oper);
     oper.clear();
+    cout<<"Operacion en formato posfijo(RPN):   ";
     s_rpn.print();
 
     Stack<double> numbers;
     solve(s_rpn,numbers);
+    cout <<endl<<endl<<"            Solucion:  ";
     numbers.print();
 
 
