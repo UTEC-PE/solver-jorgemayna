@@ -23,6 +23,8 @@ int p(string s)
     {
         return 4;
     }
+
+    // No retornas nada si no entra a un if?
 }
 void compare(string a,Queue<string>& s_rpn,Stack<string>& oper)
 {

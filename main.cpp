@@ -31,6 +31,7 @@ double operar(string s,double a,double b)
         }
         return sol;
     }
+    // Qué sucede si no entras a ninguno de tus ifs, no retornas nada?
 }
 void solve(Queue<string>& s_rpn,Stack<double>& numbers)
 {
@@ -56,6 +57,8 @@ void solve(Queue<string>& s_rpn,Stack<double>& numbers)
 }
 
 int menu() {
+    // No me está funcionando con la mayoría de ecuaciones
+    // Prueba con este caso (17*3/2-a)^b    a=5, b=1  Respuesta => 20.5
       system("cls");
       int op;
       cout<<"==========================================================="<<endl;
@@ -63,8 +66,8 @@ int menu() {
       cout<<"==========================================================="<<endl;
       cout<<endl;
       cout<<"Elija una opcion:"<<endl;
-      cout<<"1) 7/4*((a+b)*a)+3"<<endl;
-      cout<<"2) 7/4*((a+-+--b)*a)+3"<<endl;
+      cout<<"1) 7/4*((a+b)*a)+3"<<endl; // Las funciones las estás repitiendo, podrías usar el string de abajo para imprimirlas
+      cout<<"2) 7/4*((a+-+--b)*a)+3"<<endl; // No me funciona en muchos casos
       cout<<"3) 2+(3)"<<endl;
       cout<<"4) 7/4*((a+b)^4*a)+3"<<endl;
       cout<<"5) Ingrese su propia operacion"<<endl;
